@@ -117,8 +117,11 @@ INSERT INTO Empleado(DNI,Nombre,ApellidoP,ApellidoM,IdCargo) VALUES
 ('87751465','Guinevere','Riddle','Juarez','7'),
 ('94456956','Buckminster','Haynes','Horn','1');             
           
-
-
+select e.DNI,e.Nombre,e.IdCargo,c.nombreCargo
+from Cargo c
+inner join Empleado e
+on c.IdCargo = e.IdCargo
+where c.nombreCargo = 'Cajero';
 
 INSERT INTO Cliente(DNI,Nombre,Apellido,Telefono) VALUES ('42146964','VICTOR','AGAMA ANDUAGA','650519662'),
 ('40673760','WINNER','AGURTO MARCHAN','241721176'),

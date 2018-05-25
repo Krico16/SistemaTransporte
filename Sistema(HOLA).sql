@@ -16,7 +16,7 @@ Telefono varchar(9)
 --drop table TipoPago
 create table TipoPago(
 IdTipo INT primary key not null identity,
-nombre varchar(16)
+nombre varchar(20)
 )
 
 
@@ -59,15 +59,16 @@ IdEmpleado INT references Empleado,
 IdTipo INT references TipoPago
 )
 
-
+--drop table comida
 create table Comida(
 IdComida int primary key not null identity,
-nombre varchar(32) not null
+nombre varchar(64) not null
 )
 
+--drop table Serie
 create table Serie(
 IdSerie int primary key not null identity,
-nombre varchar(32) not null
+nombre varchar(64) not null
 )
 
 create table Pelicula(
@@ -75,6 +76,7 @@ IdPelicula int primary key not null identity,
 nombre varchar(64) not null
 )
 
+--drop table Servicios
 Create table Servicios(
 IdServicio int primary key not null identity,
 IdComida int references Comida,
@@ -82,21 +84,33 @@ IdSerie int references Serie,
 IdPelicula int References Pelicula
 )
 
+-----------------------------------
+--
+--
+--
+-----------------------------------
 
-create table Asiento(
-IdAsiento int primary key not null identity,
-NroAsiento int
-)
+create table marca(
+IdMarca int primary key not null identity,
+NomMarca varchar(32) not null
+);
+
+create table modelo(
+IdModelo int primary key not null identity,
+NroAsientos int,
+Nombre varchar(54),
+IdMarca int references marca(IdMarca)
+);
+
 
 --drop table Vehiculo
 create table Vehiculo(
 IdVehiculo int primary key not null identity,
-Modelo varchar(32),
-NroPlaca varchar(7),
-Tipo varchar(16),
-IdEmpleado INT references Empleado,
-IdServicio int references Servicios,
-IdAsiento int references Asiento
+IdModelo int references Modelo(IdModelo),
+NroPlaca char(7),
+Tipo varchar(32),
+IdEmpleado int references Empleado,
+IdServicio int references Servicios
 )
 
 
